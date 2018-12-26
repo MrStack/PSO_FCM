@@ -1,7 +1,10 @@
 function [J,fuzzyClassificationMatrix,Centers_vk] = J2d(wave,Centers_vk,m,categoryCount)
 fuzzyClassificationMatrix = zeros([size(wave),categoryCount]);
 JuvMatrices = 0;
-meanWave = meanMatrix(wave);
+adjacentMeanMatrix = meanMatrix(wave);
+centerMeanMatrix = meanCentersMatrix(Centers_vk,size(wave));
+
+
 
 for c = 1:categoryCount
     dk = distanceOfPixelAndGroupCenterDkij(wave,Centers_vk(c));
